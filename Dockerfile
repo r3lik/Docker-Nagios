@@ -1,5 +1,10 @@
 FROM ubuntu:16.04
-MAINTAINER Jason Rivers <jason@jasonrivers.co.uk>
+
+# Forked from https://github.com/JasonRivers/Docker-Nagios
+LABEL description="Nagios infrastructure monitoring" \
+      maintainer="mike@swatt.exchange" \
+      version="1.0"
+
 
 ENV NAGIOS_HOME            /opt/nagios
 ENV NAGIOS_USER            nagios
@@ -8,7 +13,7 @@ ENV NAGIOS_CMDUSER         nagios
 ENV NAGIOS_CMDGROUP        nagios
 ENV NAGIOS_FQDN            nagios.example.com
 ENV NAGIOSADMIN_USER       nagiosadmin
-ENV NAGIOSADMIN_PASS       nagios
+ENV NAGIOSADMIN_PASS       changeme
 ENV APACHE_RUN_USER        nagios
 ENV APACHE_RUN_GROUP       nagios
 ENV NAGIOS_TIMEZONE        UTC
@@ -33,6 +38,7 @@ RUN echo postfix postfix/main_mailer_type string "'Internet Site'" | debconf-set
         bc                                  \
         bsd-mailx                           \
         build-essential                     \
+        curl                                \
         dnsutils                            \
         fping                               \
         gettext                             \
@@ -78,6 +84,7 @@ RUN echo postfix postfix/main_mailer_type string "'Internet Site'" | debconf-set
         snmpd                               \
         snmp-mibs-downloader                \
         unzip                               \
+        vim                                 \
         python                              \
                                                 && \
     apt-get clean && rm -Rf /var/lib/apt/lists/*

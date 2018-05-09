@@ -1,8 +1,6 @@
 # Docker-Nagios
 Docker image for Nagios
 
-Build Status: [![Build Status](https://travis-ci.org/JasonRivers/Docker-Nagios.svg?branch=master)](https://travis-ci.org/JasonRivers/Docker-Nagios)
-
 Nagios Core 4.3.4 running on Ubuntu 16.04 LTS with NagiosGraph & NRPE
 
 ### Configurations
@@ -12,7 +10,7 @@ NagiosGraph configuration lives in /opt/nagiosgraph/etc
 ### Install
 
 ```sh
-docker pull jasonrivers/nagios:latest
+docker pull docker.dev.ruvpfs.swatt.exchange/nagios
 ```
 
 ### Running
@@ -20,7 +18,7 @@ docker pull jasonrivers/nagios:latest
 Run with the example configuration with the following:
 
 ```sh
-docker run --name nagios4 -p 0.0.0.0:8080:80 jasonrivers/nagios:latest
+docker run --name nagios4 -p 0.0.0.0:8080:80 docker.dev.ruvpfs.swatt.exchange/nagios
 ```
 
 alternatively you can use external Nagios configuration & log data with the following:
@@ -32,7 +30,7 @@ docker run --name nagios4  \
   -v /path-to-custom-plugins:/opt/Custom-Nagios-Plugins \
   -v /path-to-nagiosgraph-var:/opt/nagiosgraph/var \
   -v /path-to-nagiosgraph-etc:/opt/nagiosgraph/etc \
-  -p 0.0.0.0:8080:80 jasonrivers/nagios:latest
+  -p 0.0.0.0:8080:80 docker.dev.ruvpfs.swatt.exchange/nagios
 ```
 
 Note: The path for the custom plugins will be /opt/Custom-Nagios-Plugins, you will need to reference this directory in your configuration scripts.
@@ -46,11 +44,11 @@ There are a number of environment variables that you can use to adjust the behav
 | NAGIOS_FQDN | set the server Fully Qualified Domain Name in postfix |
 | NAGIOS_TIMEZONE | set the timezone of the server |
 
-For best results your Nagios image should have access to both IPv4 & IPv6 networks 
+For best results your Nagios image should have access to both IPv4 & IPv6 networks
 
 #### Credentials
 
-The default credentials for the web interface is `nagiosadmin` / `nagios`
+The default credentials for the web interface is `nagiosadmin` / `changeme`
 
 ### Extra Plugins
 
